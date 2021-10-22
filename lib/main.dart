@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:textformfield_example/widget/button_widget.dart';
+import 'package:textformfield_example/widget/Second_screen.dart';
+
+/*import 'package:ml_algo/ml_algo.dart';
+import 'package:ml_dataframe/ml_dataframe.dart';
+import 'package:ml_preprocessing/ml_preprocessing.dart';*/
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +18,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'TextFormField';
+  static final String title = 'App499 เจษฎาทำได้ !!!!';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -37,9 +42,12 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final formKey = GlobalKey<FormState>();
-  String username = '';
-  String email = '';
-  String password = '';
+  String gender = '';
+  String age = '';
+  String bmi = '';
+  String shoes = '';
+  String budget = '';
+  String pace = '';
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -52,11 +60,17 @@ class _MainPageState extends State<MainPage> {
           child: ListView(
             padding: EdgeInsets.all(16),
             children: [
-              buildUsername(),
-              const SizedBox(height: 16),
-              buildEmail(),
+              buildGender(),
               const SizedBox(height: 32),
-              buildPassword(),
+              buildAge(),
+              const SizedBox(height: 32),
+              buildBMI(),
+              const SizedBox(height: 32),
+              buildShoes(),
+              const SizedBox(height: 32),
+              buildBudget(),
+              const SizedBox(height: 32),
+              buildPace(),
               const SizedBox(height: 32),
               buildSubmit(),
             ],
@@ -64,9 +78,9 @@ class _MainPageState extends State<MainPage> {
         ),
       );
 
-  Widget buildUsername() => TextFormField(
+  Widget buildGender() => TextFormField(
         decoration: InputDecoration(
-          labelText: 'Username',
+          labelText: 'Gender',
           border: OutlineInputBorder(),
           // errorBorder:
           //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
@@ -75,66 +89,108 @@ class _MainPageState extends State<MainPage> {
           // errorStyle: TextStyle(color: Colors.purple),
         ),
         validator: (value) {
-          if (value.length < 4) {
-            return 'Enter at least 4 characters';
-          } else {
-            return null;
-          }
-        },
-        maxLength: 30,
-        onSaved: (value) => setState(() => username = value),
-      );
-
-  Widget buildEmail() => TextFormField(
-        decoration: InputDecoration(
-          labelText: 'Email',
-          border: OutlineInputBorder(),
-        ),
-        validator: (value) {
-          final pattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
-          final regExp = RegExp(pattern);
-
           if (value.isEmpty) {
-            return 'Enter an email';
-          } else if (!regExp.hasMatch(value)) {
-            return 'Enter a valid email';
+            return 'Enter Gender';
           } else {
             return null;
           }
         },
-        keyboardType: TextInputType.emailAddress,
-        onSaved: (value) => setState(() => email = value),
+        onSaved: (value) => setState(() => gender = value),
       );
 
-  Widget buildPassword() => TextFormField(
+  Widget buildAge() => TextFormField(
         decoration: InputDecoration(
-          labelText: 'Password',
+          labelText: 'Age',
           border: OutlineInputBorder(),
         ),
         validator: (value) {
-          if (value.length < 7) {
-            return 'Password must be at least 7 characters long';
+          if (value.isEmpty) {
+            return 'Enter Age';
           } else {
             return null;
           }
         },
-        onSaved: (value) => setState(() => password = value),
-        keyboardType: TextInputType.visiblePassword,
-        obscureText: true,
+        onSaved: (value) => setState(() => age = value),
+      );
+
+  Widget buildBMI() => TextFormField(
+        decoration: InputDecoration(
+          labelText: 'BMI',
+          border: OutlineInputBorder(),
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Enter BMI';
+          } else {
+            return null;
+          }
+        },
+        onSaved: (value) => setState(() => bmi = value),
+      );
+
+  Widget buildShoes() => TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Shoes',
+          border: OutlineInputBorder(),
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Enter Shoes';
+          } else {
+            return null;
+          }
+        },
+        onSaved: (value) => setState(() => shoes = value),
+      );
+
+  Widget buildPace() => TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Pace',
+          border: OutlineInputBorder(),
+          // errorBorder:
+          //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+          // focusedErrorBorder:
+          //     OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+          // errorStyle: TextStyle(color: Colors.purple),
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Enter Pace';
+          } else {
+            return null;
+          }
+        },
+        onSaved: (value) => setState(() => pace = value),
+      );
+
+  Widget buildBudget() => TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Budget',
+          border: OutlineInputBorder(),
+        ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Enter Budget';
+          } else {
+            return null;
+          }
+        },
+        onSaved: (value) => setState(() => budget = value),
       );
 
   Widget buildSubmit() => Builder(
         builder: (context) => ButtonWidget(
           text: 'Submit',
           onClicked: () {
-            final isValid = formKey.currentState.validate();
-            // FocusScope.of(context).unfocus();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Second_screen()));
+            /*final isValid = formKey.currentState.validate();
 
             if (isValid) {
               formKey.currentState.save();
 
               final message =
-                  'Username: $username\nPassword: $password\nEmail: $email';
+                  'Gender: $gender\nAge: $age\nBMI: $bmi\nShoes: $shoes\nBudger: $budget';
               final snackBar = SnackBar(
                 content: Text(
                   message,
@@ -143,7 +199,7 @@ class _MainPageState extends State<MainPage> {
                 backgroundColor: Colors.green,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            }
+            }*/
           },
         ),
       );

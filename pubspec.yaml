@@ -9,6 +9,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.0
+  ml_algo: ^16.0.0
+  ml_dataframe: ^0.5.1
 
 dev_dependencies:
   flutter_test:
