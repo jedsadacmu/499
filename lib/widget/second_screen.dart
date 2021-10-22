@@ -1,35 +1,38 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:textformfield_example/services/predict.dart';
 
-void main() {
-  runApp(Second_screen());
-}
 
-/*class Second_screen extends StatefulWidget {
-  @override
-  _Second_screenState createState() => _Second_screenState();
-}
-
-class _Second_screenState extends State<Second_screen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Result"),
-      ),
-    );
-  }
-}*/
 class Second_screen extends StatelessWidget {
+  var _answers = PredictService.getAnswers();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result"),
+        title: Text('App499 เจษฎาทำได้ !!!!'),
       ),
+      body:  ListView.builder(
+          itemCount: _answers.length,
+          itemBuilder: (context, index) {
+        return Text(_answers[index]);
+      })
     );
   }
 }
+
+
+// class Second_screen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Result"),
+//       ),
+//     );
+//   }
+// }
 
 /*void main() {
   var arr = [
